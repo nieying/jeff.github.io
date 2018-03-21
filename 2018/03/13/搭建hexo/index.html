@@ -77,7 +77,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '6.0.5',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -100,17 +100,18 @@
 
 
   
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="blog," />
 
 
 <meta name="description" content="环境 node  git  选一个hexo主题  ps: 我用的是next那个主题 配置 如何分类？ 如何添加自己的样式？ 如何添加图片？  一些简单markdown语法 加链接 1$ [jeff](&apos;https://nieying.github.io&apos;)  图片 1$ ![test](/images/test.jpeg)">
+<meta name="keywords" content="blog">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用hexo搭建个人博客">
 <meta property="og:url" content="http://yoursite.com/2018/03/13/搭建hexo/index.html">
 <meta property="og:site_name" content="长不大的孩子">
 <meta property="og:description" content="环境 node  git  选一个hexo主题  ps: 我用的是next那个主题 配置 如何分类？ 如何添加自己的样式？ 如何添加图片？  一些简单markdown语法 加链接 1$ [jeff](&apos;https://nieying.github.io&apos;)  图片 1$ ![test](/images/test.jpeg)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-13T06:12:43.000Z">
+<meta property="og:updated_time" content="2018-03-21T02:07:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用hexo搭建个人博客">
 <meta name="twitter:description" content="环境 node  git  选一个hexo主题  ps: 我用的是next那个主题 配置 如何分类？ 如何添加自己的样式？ 如何添加图片？  一些简单markdown语法 加链接 1$ [jeff](&apos;https://nieying.github.io&apos;)  图片 1$ ![test](/images/test.jpeg)">
@@ -176,7 +177,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -224,21 +225,24 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">6</span>
+              </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类<span class="badge">11</span>
+              </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-react">
-          <a href="/categories/react" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />react</a>
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">7</span>
+              </a>
         </li>
       
 
@@ -321,6 +325,24 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/博客/" itemprop="url" rel="index"><span itemprop="name">博客</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -383,6 +405,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/blog/" rel="tag"># blog</a>
+          
+        </div>
+      
 
       
       
@@ -392,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/13/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/03/12/为什么React的性能要好/" rel="next" title="为什么React的性能要好">
+                <i class="fa fa-chevron-left"></i> 为什么React的性能要好
               </a>
             
           </div>
@@ -402,8 +430,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/13/zsh/" rel="prev" title="zsh一些常用命令">
-                zsh一些常用命令 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/13/linux简单命令/" rel="prev" title="linux简单命令">
+                linux简单命令 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -482,7 +510,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -492,14 +520,34 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  
+                  <a href="/categories/index.html">
                     
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
-                  
+                  </a>
                 </div>
               
 
@@ -507,14 +555,24 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  
+                  <a href="/tags/index.html">
                     
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
-                  
+                  </a>
                 </div>
               
             </nav>
