@@ -100,28 +100,28 @@
 
 
   
-  <meta name="keywords" content="mac," />
+  <meta name="keywords" content="react," />
 
 
-<meta name="description" content="插入1在vim中直接输入 `i` 保存并退出12$ ctrl+c $ 两个大写的ZZ 退出123$ ctrl+c $ :quit!$ 回车键">
-<meta name="keywords" content="mac">
+<meta name="description" content="React-redux简介React-Redux 将所有组件分成两大类：UI 组件（presentational component）和容器组件（container component）。 UI组件 只负责 UI 的呈现，不带有任何业务逻辑 没有状态（即不使用this.state这个变量） 所有数据都由参数（this.props）提供 不使用任何 Redux 的 API  容器组件 负责管理数据和">
+<meta name="keywords" content="react">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vim一些常用命令">
-<meta property="og:url" content="http://yoursite.com/2018/03/13/vim编辑文件/index.html">
+<meta property="og:title" content="react-redux简单用法">
+<meta property="og:url" content="http://yoursite.com/2018/05/08/react-redux简单用法/index.html">
 <meta property="og:site_name" content="长不大的孩子">
-<meta property="og:description" content="插入1在vim中直接输入 `i` 保存并退出12$ ctrl+c $ 两个大写的ZZ 退出123$ ctrl+c $ :quit!$ 回车键">
+<meta property="og:description" content="React-redux简介React-Redux 将所有组件分成两大类：UI 组件（presentational component）和容器组件（container component）。 UI组件 只负责 UI 的呈现，不带有任何业务逻辑 没有状态（即不使用this.state这个变量） 所有数据都由参数（this.props）提供 不使用任何 Redux 的 API  容器组件 负责管理数据和">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-21T02:09:33.672Z">
+<meta property="og:updated_time" content="2018-05-08T08:24:01.964Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vim一些常用命令">
-<meta name="twitter:description" content="插入1在vim中直接输入 `i` 保存并退出12$ ctrl+c $ 两个大写的ZZ 退出123$ ctrl+c $ :quit!$ 回车键">
+<meta name="twitter:title" content="react-redux简单用法">
+<meta name="twitter:description" content="React-redux简介React-Redux 将所有组件分成两大类：UI 组件（presentational component）和容器组件（container component）。 UI组件 只负责 UI 的呈现，不带有任何业务逻辑 没有状态（即不使用this.state这个变量） 所有数据都由参数（this.props）提供 不使用任何 Redux 的 API  容器组件 负责管理数据和">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/13/vim编辑文件/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/08/react-redux简单用法/"/>
 
 
 
@@ -130,7 +130,7 @@
     sidebar: "",
   };
 </script>
-  <title>vim一些常用命令 | 长不大的孩子</title>
+  <title>react-redux简单用法 | 长不大的孩子</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/13/vim编辑文件/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/08/react-redux简单用法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jeff">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">vim一些常用命令</h1>
+          <h1 class="post-title" itemprop="name headline">react-redux简单用法</h1>
         
 
         <div class="post-meta">
@@ -315,7 +315,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-13T15:39:40+08:00">2018-03-13</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-08T15:43:49+08:00">2018-05-08</time>
             
 
             
@@ -336,7 +336,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vim/" itemprop="url" rel="index"><span itemprop="name">vim</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端框架/" itemprop="url" rel="index"><span itemprop="name">前端框架</span></a></span>
 
                 
                 
@@ -370,9 +370,38 @@
       
 
       
-        <h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在vim中直接输入 `i`</span><br></pre></td></tr></table></figure>
-<h3 id="保存并退出"><a href="#保存并退出" class="headerlink" title="保存并退出"></a>保存并退出</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ctrl+c </span><br><span class="line">$ 两个大写的ZZ</span><br></pre></td></tr></table></figure>
-<h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ctrl+c </span><br><span class="line">$ :quit!</span><br><span class="line">$ 回车键</span><br></pre></td></tr></table></figure>
+        <h3 id="React-redux简介"><a href="#React-redux简介" class="headerlink" title="React-redux简介"></a>React-redux简介</h3><p><code>React-Redux 将所有组件分成两大类：UI 组件（presentational component）和容器组件（container component）。</code></p>
+<h4 id="UI组件"><a href="#UI组件" class="headerlink" title="UI组件"></a>UI组件</h4><ul>
+<li>只负责 UI 的呈现，不带有任何业务逻辑</li>
+<li>没有状态（即不使用this.state这个变量）</li>
+<li>所有数据都由参数（this.props）提供</li>
+<li>不使用任何 Redux 的 API</li>
+</ul>
+<h4 id="容器组件"><a href="#容器组件" class="headerlink" title="容器组件"></a>容器组件</h4><ul>
+<li>负责管理数据和业务逻辑，不负责 UI 的呈现</li>
+<li>带有内部状态</li>
+<li>使用 Redux 的 API</li>
+</ul>
+<h3 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h3><p><code>就是把UI组件和容器组件连接起来</code></p>
+<h3 id="mapStateToProps"><a href="#mapStateToProps" class="headerlink" title="mapStateToProps"></a>mapStateToProps</h3><p><code>mapStateToProps是一个函数。它的作用就是像它的名字那样，建立一个从（外部的）state对象到（UI 组件的）props对象的映射关系。</code><br><code>作为函数，mapStateToProps执行后应该返回一个对象，里面的每一个键值对就是一个映射。请看下面的例子。</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const mapStateToProps = (state) =&gt; &#123;</span><br><span class="line">  <span class="built_in">return</span> &#123;</span><br><span class="line">    userInfo: state.global.userInfo</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用redux"><a href="#使用redux" class="headerlink" title="使用redux"></a>使用redux</h3><p><code>无论代码怎么布局，使用redux的方法主要还是三步曲：创建store、创建action、创建reducer。而在这之后才是与业务或者组件相关的数据处理和展示。</code></p>
+<ul>
+<li><p><code>App.js</code> // 入口文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import React from <span class="string">'react'</span>;</span><br><span class="line">import ReactDOM from <span class="string">'react-dom'</span>;</span><br><span class="line">import &#123; createStore, applyMiddleware, combineReducers &#125; from <span class="string">'redux'</span>;</span><br><span class="line">import thunk form <span class="string">'redux-thunk'</span>;</span><br><span class="line">import &#123; Provider &#125; from <span class="string">'react-redux'</span></span><br><span class="line">import  rootReducer from <span class="string">'../../index'</span></span><br><span class="line"></span><br><span class="line">const store = createStore(</span><br><span class="line">  combineReducers(&#123; ...rootReducer &#125;),</span><br><span class="line">  applyMiddleware(thunk)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">    &lt;div &#123;this.props&#125; /&gt;</span><br><span class="line">  &lt;/Provider&gt;</span><br><span class="line">  , document.getElementById(<span class="string">'root'</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>index.js</code> // 所有的reducer入口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import &#123;global&#125; from <span class="string">'./global'</span></span><br><span class="line"></span><br><span class="line">const rootReducer = &#123;</span><br><span class="line">  global</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default rootReducer</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>action</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> const saveUserInfo = userInfo =&gt; (&#123;</span><br><span class="line">  <span class="built_in">type</span>:<span class="string">'SAVE_USER_INFO'</span>,</span><br><span class="line">  userInfo</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>reducers</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> const global = (state, action) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">  switch(action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'SAVE_USER_INFO'</span>:</span><br><span class="line">      <span class="built_in">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        userInfo: action.userInfo</span><br><span class="line">      &#125;;</span><br><span class="line">    default:</span><br><span class="line">     <span class="built_in">return</span> state;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>组件中使用</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import &#123; connent &#125; from <span class="string">'redux'</span></span><br><span class="line">import &#123; saveUserInfo &#125; from <span class="string">'../action.js'</span></span><br><span class="line"></span><br><span class="line">class Login extends Component &#123;</span><br><span class="line"></span><br><span class="line">  onClickCallback = () =&gt; &#123;</span><br><span class="line">    this.props.dispath(saveUserInfo(data)) // 触发action</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const mapStateToProps = (state) =&gt; &#123;</span><br><span class="line">  <span class="built_in">return</span> &#123;</span><br><span class="line">    userInfo: state.global.userInfo</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default connect(mapStateToProps)(Login)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
     </div>
@@ -393,7 +422,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/mac/" rel="tag"># mac</a>
+            <a href="/tags/react/" rel="tag"># react</a>
           
         </div>
       
@@ -406,8 +435,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/13/hexo一些简单语法/" rel="next" title="hexo一些简单语法">
-                <i class="fa fa-chevron-left"></i> hexo一些简单语法
+              <a href="/2018/05/08/react-ref用法/" rel="next" title="react-ref用法">
+                <i class="fa fa-chevron-left"></i> react-ref用法
               </a>
             
           </div>
@@ -416,8 +445,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/13/zsh/" rel="prev" title="zsh一些常用命令">
-                zsh一些常用命令 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/09/react-生命周期函数/" rel="prev" title="react-生命周期函数">
+                react-生命周期函数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -596,7 +625,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#插入"><span class="nav-number">1.</span> <span class="nav-text">插入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存并退出"><span class="nav-number">2.</span> <span class="nav-text">保存并退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#退出"><span class="nav-number">3.</span> <span class="nav-text">退出</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#React-redux简介"><span class="nav-number">1.</span> <span class="nav-text">React-redux简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UI组件"><span class="nav-number">1.1.</span> <span class="nav-text">UI组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#容器组件"><span class="nav-number">1.2.</span> <span class="nav-text">容器组件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#connect"><span class="nav-number">2.</span> <span class="nav-text">connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mapStateToProps"><span class="nav-number">3.</span> <span class="nav-text">mapStateToProps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用redux"><span class="nav-number">4.</span> <span class="nav-text">使用redux</span></a></li></ol></div>
             
 
           </div>
