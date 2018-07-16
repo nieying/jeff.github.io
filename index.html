@@ -226,21 +226,21 @@
         
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">6</span>
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">9</span>
               </a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类<span class="badge">6</span>
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类<span class="badge">7</span>
               </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">15</span>
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">20</span>
               </a>
         </li>
       
@@ -269,6 +269,723 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/11/js概念宝典/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jeff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myself.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长不大的孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/11/js概念宝典/" itemprop="url">js部分概念</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-11T09:38:54+08:00">2018-07-11</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/theory/" itemprop="url" rel="index"><span itemprop="name">theory</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="JS-的垃圾回收机制"><a href="#JS-的垃圾回收机制" class="headerlink" title="JS 的垃圾回收机制"></a>JS 的垃圾回收机制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* Js具有自动垃圾回收机制。垃圾收集器会按照固定的时间间隔周期性的执行。</span><br><span class="line">* JS中最常见的垃圾回收方式是标记清除。`</span><br></pre></td></tr></table></figure>
+<p>工作原理：是当变量进入环境时，将这个变量标记为“进入环境”。当变量离开环境时，则将其标记为“离开环境”。标记“离开环境”的就回收内存。<br>工作流程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">垃圾回收器，在运行的时候会给存储在内存中的所有变量都加上标记。</span><br><span class="line">去掉环境中的变量以及被环境中的变量引用的变量的标记。</span><br><span class="line">再被加上标记的会被视为准备删除的变量。</span><br><span class="line">垃圾回收器完成内存清除工作，销毁那些带标记的值并回收他们所占用的内存空间。</span><br></pre></td></tr></table></figure>
+<h5 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h5><p>工作原理：跟踪记录每个值被引用的次数。</p>
+<p>工作流程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">声明了一个变量并将一个引用类型的值赋值给这个变量，这个引用类型值的引用次数就是1。</span><br><span class="line">同一个值又被赋值给另一个变量，这个引用类型值的引用次数加1.</span><br><span class="line">当包含这个引用类型值的变量又被赋值成另一个值了，那么这个引用类型值的引用次数减1.</span><br><span class="line">当引用次数变成0时，说明没办法访问这个值了。</span><br><span class="line">当垃圾收集器下一次运行时，它就会释放引用次数是0的值所占的内存。</span><br></pre></td></tr></table></figure>
+<p>但是循环引用的时候就会释放不掉内存。循环引用就是对象 A 中包含另一个指向对象 B 的指针，B 中也包含一个指向 A 的引用。<br>因为 IE 中的 BOM、DOM 的实现使用了 COM，而 COM 对象使用的垃圾收集机制是引用计数策略。所以会存在循环引用的问题。<br>解决：手工断开 js 对象和 DOM 之间的链接。赋值为 null。IE9 把 DOM 和 BOM 转换成真正的 JS 对象了，所以避免了这个问题。</p>
+<h5 id="什么情况会引起内存泄漏？"><a href="#什么情况会引起内存泄漏？" class="headerlink" title="什么情况会引起内存泄漏？"></a>什么情况会引起内存泄漏？</h5><p>虽然有垃圾回收机制但是我们编写代码操作不当还是会造成内存泄漏。</p>
+<ul>
+<li>意外的全局变量引起的内存泄漏。</li>
+</ul>
+<p>原因：全局变量，不会被回收。<br>解决：使用严格模式避免。</p>
+<ul>
+<li>闭包引起的内存泄漏</li>
+</ul>
+<p>原因：闭包可以维持函数内局部变量，使其得不到释放。<br>解决：将事件处理函数定义在外部，解除闭包,或者在定义事件处理函数的外部函数中，删除对 dom 的引用。</p>
+<ul>
+<li>没有清理的 DOM 元素引用</li>
+</ul>
+<p>原因：虽然别的地方删除了，但是对象中还存在对 dom 的引用<br>解决：手动删除。</p>
+<ul>
+<li>被遗忘的定时器或者回调</li>
+</ul>
+<p>原因：定时器中有 dom 的引用，即使 dom 删除了，但是定时器还在，所以内存中还是有这个 dom。<br>解决：手动删除定时器和 dom。</p>
+<ul>
+<li>子元素存在引用引起的内存泄漏</li>
+</ul>
+<p>原因：div 中的 ul li 得到这个 div，会间接引用某个得到的 li，那么此时因为 div 间接引用 li，即使 li 被清空，也还是在内存中，并且只要 li 不被删除，他的父元素都不会被删除。<br>解决：手动删除清空。</p>
+<h5 id="什么放在内存中？什么不放在内存中？"><a href="#什么放在内存中？什么不放在内存中？" class="headerlink" title="什么放在内存中？什么不放在内存中？"></a>什么放在内存中？什么不放在内存中？</h5><p>基本类型是：Undefined/Null/Boolean/Number/String</p>
+<p>基本类型的值存在内存中，被保存在栈内存中。从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本。</p>
+<p>引用类型：object</p>
+<p>引用类型的值是对象，保存在堆内存中。</p>
+<ol>
+<li><p>包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向该对象的指针。从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终都指向同一个对象。</p>
+</li>
+<li><p>js 不允许直接访问内存中的位置，也就是不能直接访问操作对象的内存空间。在操作对象时，实际上是在操作对象的引用而不是实际的对象。</p>
+</li>
+</ol>
+<h5 id="栈和堆的区别"><a href="#栈和堆的区别" class="headerlink" title="栈和堆的区别"></a>栈和堆的区别</h5><p>一、堆栈空间分配区别：<br>　　 1、栈（操作系统）：由操作系统自动分配释放 ，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈；<br>　　 2、堆（操作系统）： 一般由程序员分配释放，若程序员不释放，程序结束时可能由 OS 回收，分配方式倒是类似于链表。<br>　　二、堆栈缓存方式区别：<br>　　 1、栈使用的是一级缓存， 他们通常都是被调用时处于存储空间中，调用完毕立即释放；<br>　　 2、堆是存放在二级缓存中，生命周期由虚拟机的垃圾回收算法来决定（并不是一旦成为孤儿对象就能被回收）。所以调用这些对象的速度要相对来得低一些。<br>　　三、堆栈数据结构区别：<br>　　堆（数据结构）：堆可以被看成是一棵树，如：堆排序；<br>　　栈（数据结构）：一种先进后出的数据结构。</p>
+<h4 id="浏览器输入URL过程中都发生了什么？"><a href="#浏览器输入URL过程中都发生了什么？" class="headerlink" title="浏览器输入URL过程中都发生了什么？"></a>浏览器输入URL过程中都发生了什么？</h4><h5 id="详细版"><a href="#详细版" class="headerlink" title="详细版"></a>详细版</h5><p>浏览器会开启一个线程来处理这个请求，对 URL 分析判断如果是 http 协议就按照 Web 方式来处理;<br>调用浏览器内核中的对应方法，比如 WebView 中的 loadUrl 方法;<br>通过DNS解析获取网址的IP地址，设置 UA 等信息发出第二个GET请求;<br>进行HTTP协议会话，客户端发送报头(请求报头);<br>进入到web服务器上的 Web Server，如 Apache、Tomcat、Node.JS 等服务器;<br>进入部署好的后端应用，如 PHP、Java、JavaScript、Python 等，找到对应的请求处理;<br>处理结束回馈报头，此处如果浏览器访问过，缓存上有对应资源，会与服务器最后修改时间对比，一致则返回304;<br>浏览器开始下载html文档(响应报头，状态码200)，同时使用缓存;<br>文档树建立，根据标记请求所需指定MIME类型的文件（比如css、js）,同时设置了cookie;<br>页面开始渲染DOM，JS根据DOM API操作DOM,执行事件绑定等，页面显示完成。</p>
+<h5 id="简洁版"><a href="#简洁版" class="headerlink" title="简洁版"></a>简洁版</h5><p>浏览器根据请求的URL交给DNS域名解析，找到真实IP，向服务器发起请求；<br>服务器交给后台处理完成后返回数据，浏览器接收文件（HTML、JS、CSS、图象等）；<br>浏览器对加载到的资源（HTML、JS、CSS等）进行语法解析，建立相应的内部数据结构（如HTML的DOM）；<br>载入解析到的资源文件，渲染页面，完成。</p>
+<h4 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h4><h5 id="认证服务器。"><a href="#认证服务器。" class="headerlink" title="认证服务器。"></a>认证服务器。</h5><p>浏览器内置一个受信任的CA机构列表，并保存了这些CA机构的证书。第一阶段服务器会提供经CA机构认证颁发的服务器证书，如果认证该服务器证书的CA机构，存在于浏览器的受信任CA机构列表中，并且服务器证书中的信息与当前正在访问的网站（域名等）一致，那么浏览器就认为服务端是可信的，并从服务器证书中取得服务器公钥，用于后续流程。否则，浏览器将提示用户，根据用户的选择，决定是否继续。当然，我们可以管理这个受信任CA机构列表，添加我们想要信任的CA机构，或者移除我们不信任的CA机构。</p>
+<h5 id="协商会话密钥。"><a href="#协商会话密钥。" class="headerlink" title="协商会话密钥。"></a>协商会话密钥。</h5><p>客户端在认证完服务器，获得服务器的公钥之后，利用该公钥与服务器进行加密通信，协商出两个会话密钥，分别是用于加密客户端往服务端发送数据的客户端会话密钥，用于加密服务端往客户端发送数据的服务端会话密钥。在已有服务器公钥，可以加密通讯的前提下，还要协商两个对称密钥的原因，是因为非对称加密相对复杂度更高，在数据传输过程中，使用对称加密，可以节省计算资源。另外，会话密钥是随机生成，每次协商都会有不一样的结果，所以安全性也比较高。</p>
+<h5 id="加密通讯。"><a href="#加密通讯。" class="headerlink" title="加密通讯。"></a>加密通讯。</h5><p>此时客户端服务器双方都有了本次通讯的会话密钥，之后传输的所有Http数据，都通过会话密钥加密。这样网路上的其它用户，将很难窃取和篡改客户端和服务端之间传输的数据，从而保证了数据的私密性和完整性。</p>
+<h4 id="HTTPS和HTTP的区别"><a href="#HTTPS和HTTP的区别" class="headerlink" title="HTTPS和HTTP的区别"></a>HTTPS和HTTP的区别</h4><p>超文本传输协议HTTP协议被用于在Web浏览器和网站服务器之间传递信息。HTTP协议以明文方式发送内容，不提供任何方式的数据加密，如果攻击者截取了Web浏览器和网站服务器之间的传输报文，就可以直接读懂其中的信息，因此HTTP协议不适合传输一些敏感信息，比如信用卡号、密码等。<br>为了解决HTTP协议的这一缺陷，需要使用另一种协议：安全套接字层超文本传输协议HTTPS。为了数据传输的安全，HTTPS在HTTP的基础上加入了SSL协议，SSL依靠证书来验证服务器的身份，并为浏览器和服务器之间的通信加密。</p>
+<p>HTTPS和HTTP的区别主要为以下四点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">https协议需要到ca申请证书，一般免费证书很少，需要交费。</span><br><span class="line">http是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议。</span><br><span class="line">http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</span><br><span class="line">http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</span><br></pre></td></tr></table></figure></p>
+<h4 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h4><p>100  Continue  继续，一般在发送post请求时，已发送了http header之后服务端将返回此信息，表示确认，之后发送具体参数信息<br>200  OK   正常返回信息<br>201  Created  请求成功并且服务器创建了新的资源<br>202  Accepted  服务器已接受请求，但尚未处理<br>301  Moved Permanently  请求的网页已永久移动到新位置。<br>302  Found  临时性重定向。<br>303  See Other  临时性重定向，且总是使用 GET 请求新的 URI。<br>304  Not Modified  自从上次请求后，请求的网页未修改过。<br>400  Bad Request  服务器无法理解请求的格式，客户端不应当尝试再次使用相同的内容发起请求。<br>401  Unauthorized  请求未授权。<br>403  Forbidden  禁止访问。<br>404  Not Found  找不到如何与 URI 相匹配的资源。<br>500  Internal Server Error  最常见的服务器端错误。<br>503  Service Unavailable 服务器端暂时无法处理请求（可能是过载或维护）。</p>
+<h4 id="null和undefined区别"><a href="#null和undefined区别" class="headerlink" title="null和undefined区别"></a>null和undefined区别</h4><p><code>null是一个表示&quot;无&quot;的对象，转为数值时为0；undefined是一个表示&quot;无&quot;的原始值，转为数值时为NaN</code></p>
+<h5 id="null"><a href="#null" class="headerlink" title="null"></a>null</h5><p>作为函数参数，表示该函数参数不是对象；<br>作为对象原型链的终点</p>
+<h5 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h5><p>变量被申明了，但是没有被赋值，就等于undefined;<br>调用函数时，应该提供的参数没有提供，该参数等于undefined。<br>对象没有赋值的属性，该属性的值为undefined。<br>函数没有返回值时，默认返回undefined。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/28/call与apply区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jeff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myself.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长不大的孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/28/call与apply区别/" itemprop="url">call与apply区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-28T08:38:54+08:00">2018-06-28</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ul>
+<li>每个函数都包含两个非继承而来的方法：call()方法和apply()方法。</li>
+<li>相同点：这两个方法的作用是一样的。都是在特定的作用域中调用函数，等于设置函数体内this对象的值，以扩充函数赖以运行的作用域。</li>
+</ul>
+<h3 id="call-方法使用"><a href="#call-方法使用" class="headerlink" title="call()方法使用"></a>call()方法使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    window.color = <span class="string">'red'</span>;</span><br><span class="line">    document.color = <span class="string">'yellow'</span>;</span><br><span class="line">    var s1 = &#123;color: <span class="string">'blue'</span> &#125;;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">changeColor</span></span>()&#123;</span><br><span class="line">        console.log(this.color);</span><br><span class="line">    &#125;</span><br><span class="line">    changeColor.call();         //red (默认传递参数)</span><br><span class="line">    changeColor.call(window);   //red</span><br><span class="line">    changeColor.call(document); //yellow</span><br><span class="line">    changeColor.call(this);     //red</span><br><span class="line">    changeColor.call(s1);       //blue</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var Pet = &#123;</span><br><span class="line">    words : <span class="string">'...'</span>,</span><br><span class="line">    speak : <span class="keyword">function</span> (say) &#123;</span><br><span class="line">        console.log(say + <span class="string">''</span>+ this.words)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Pet.speak(<span class="string">'Speak'</span>); // 结果：Speak...</span><br><span class="line"></span><br><span class="line">var Dog = &#123;</span><br><span class="line">    words:<span class="string">'Wang'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//将this的指向改变成了Dog</span><br><span class="line">Pet.speak.call(Dog, <span class="string">'Speak'</span>); //结果： SpeakWang</span><br></pre></td></tr></table></figure>
+<h3 id="apply-方法使用"><a href="#apply-方法使用" class="headerlink" title="apply()方法使用"></a>apply()方法使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  window.number = <span class="string">'one'</span>;</span><br><span class="line">  document.number = <span class="string">'two'</span>;</span><br><span class="line">  var s1 = &#123;number: <span class="string">'three'</span> &#125;;</span><br><span class="line">  <span class="keyword">function</span> <span class="function"><span class="title">changeColor</span></span>()&#123;</span><br><span class="line">      console.log(this.number);</span><br><span class="line">  &#125;</span><br><span class="line">  changeColor.apply();         //one (默认传参)</span><br><span class="line">  changeColor.apply(window);   //one</span><br><span class="line">  changeColor.apply(document); //two</span><br><span class="line">  changeColor.apply(this);     //one</span><br><span class="line">  changeColor.apply(s1);       //three</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Pet(words)&#123;</span><br><span class="line">  this.words = words;</span><br><span class="line">  this.speak = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      console.log( this.words)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> Dog(words)&#123;</span><br><span class="line">  //Pet.call(this, words); //结果： Wang</span><br><span class="line">  Pet.apply(this, arguments); //结果： Wang</span><br><span class="line">&#125;</span><br><span class="line">var dog = new Dog(<span class="string">'Wang'</span>);</span><br><span class="line">dog.speak();</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/28/css宝典/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jeff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myself.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长不大的孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/28/css宝典/" itemprop="url">css宝典</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-28T07:38:54+08:00">2018-06-28</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="兼容IE多行…显示"><a href="#兼容IE多行…显示" class="headerlink" title="兼容IE多行…显示"></a>兼容IE多行…显示</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.class &#123;</span><br><span class="line">  position: relative;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">  max-height: 40px;</span><br><span class="line">  &amp;::after &#123;</span><br><span class="line">    content: <span class="string">'...'</span>;</span><br><span class="line">    position: absolute;</span><br><span class="line">    right: 0;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    padding-left: 10px;</span><br><span class="line">    backgroud: linear-gradient(left, transparent, <span class="comment">#fff 50%);</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="只在谷歌浏览器有效果"><a href="#只在谷歌浏览器有效果" class="headerlink" title="只在谷歌浏览器有效果"></a>只在谷歌浏览器有效果</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.a &#123;</span><br><span class="line">   overflow: hidden;</span><br><span class="line">   text-overflow: ellipsis;</span><br><span class="line">   word-break: <span class="built_in">break</span>-all;</span><br><span class="line">   display: -webkit-box;</span><br><span class="line">   -webkit-box-orient: vertical;</span><br><span class="line">    //要显示的行数</span><br><span class="line">   -webkit-line-clamp: 2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/26/h5兼容问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jeff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myself.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长不大的孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/26/h5兼容问题/" itemprop="url">h5兼容问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-26T09:28:54+08:00">2018-06-26</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1)写背景图时最好加上top left 或者0 0 不然写运动效果时容易出现跳<br>2)防止手机中网页放大和缩小:<code>&lt;meta name=&quot;viewport&quot; content=&quot;user-scalable=0&quot; /&gt;</code><br>3)设置Web应用是否以全屏模式运行:<code>&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;</code>,content的默认值是no</p>
+<p>4)自动识别电话号码:<code>&lt;meta name=&quot;format-detection&quot; ontent=&quot;telephone=no&quot;&gt;</code>,telephone=no可以禁用这功能,默认值是no</p>
+<p>5)禁止复制、选中文本:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Element &#123;</span><br><span class="line">  -webkit-user-select: none;</span><br><span class="line">  -moz-user-select: none;</span><br><span class="line">  -khtml-user-select: none;</span><br><span class="line">   user-select: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>7) 设置缓存:<br><code>&lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;no-cache&quot; /&gt;</code><br>手机页面通常在第一次加载后会进行缓存，然后每次刷新会使用缓存而不是去重新向服务器发送请求。如果不希望使用缓存可以设置no-cache。</p>
+<p>8) 苹果手机固定定位有bug 检查html和body是不是设置了overflow-x:hidden;</p>
+<p>9) IOS手机中如果出现一个元素的层级非常高可还是被别的元素遮盖的，那么就将该元素与别的元素同级</p>
+<p>10) 给不同屏幕大小的手机设置特殊样式:<br>@media only screen  and (min-device-width : 320px)  and (max-device-width : 375px){              }</p>
+<p>11) IOS中input键盘事件keyup、keydown、keypress支持不是很好, 用input监听键盘keyup事件，在安卓手机浏览器中是可以的，但是在ios手机浏览器中用输入法输入之后，并未立刻相应keyup事件，只有在通过删除之后才可以响应<br>方法：可以用html5的oninput事件去代替keyup</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"testInput"</span>&gt;</span><br><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">  document.getElementById(<span class="string">'input'</span>).addEventListener(<span class="string">'input'</span>, <span class="keyword">function</span>(e)&#123;</span><br><span class="line">    var value = e.target.value;</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>12)、ios 设置input 按钮样式会被默认样式覆盖<br>解决方式如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">input,</span><br><span class="line">textarea &#123;</span><br><span class="line">  border: 0;</span><br><span class="line">  -webkit-appearance: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>13)、消除 IE10 里面的那个叉号:input:-ms-clear{display:none;}</p>
+<p>14)、关于 iOS 系统中，中文输入法输入英文时，字母之间可能会出现一个六分之一空格可以通过正则去掉<br>1<br>this.value = this.value.replace(/\u2006/g, ‘’);<br>15)、手机上的flex布局时会有兼容性问题，只用新版本的会出现安卓手机不识别的现象<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">    display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */</span><br><span class="line">    display: -moz-box; /* 老版本语法: Firefox (buggy) */</span><br><span class="line">    display: -ms-flexbox; /* 混合版本语法: IE 10 */</span><br><span class="line">    display: -webkit-flex; /* 新版本语法: Chrome 21+ */</span><br><span class="line">display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */</span><br><span class="line">&#125;</span><br><span class="line">.box&gt;li&#123;</span><br><span class="line">-webkit-box-flex: 1.0;</span><br><span class="line">box-flex: 1.0;</span><br><span class="line">-webkit-flex: 1.0;</span><br><span class="line">flex: 1;</span><br><span class="line">width: 0;/*解决兼容性问题*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>16)、<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">html,body&#123;</span><br><span class="line">overflow: hidden;/*手机上写overflow-x:hidden;会有兼容性问题，如果子级如果是绝对定位有运动到屏幕外的话ios7系统会出现留白*/</span><br><span class="line">-webkit-overflow-scrolling:touch;/*流畅滚动,ios7下会有滑一下滑不动的情况，所以需要写上*/</span><br><span class="line">position:realtive;/*直接子级如果是绝对定位有运动到屏幕外的话，会出现留白*/</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>17)<br>viewport模板<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">&lt;meta content=<span class="string">"width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"</span> name=<span class="string">"viewport"</span>&gt;//主要I是强制让文档的宽度与设备宽度保持1:1，最大宽度1.0，禁止屏幕缩放。</span><br><span class="line">&lt;meta content=<span class="string">"yes"</span> name=<span class="string">"apple-mobile-web-app-capable"</span>&gt;//这个也是iphone私有标签，允许全屏浏览。</span><br><span class="line">&lt;meta content=<span class="string">"black"</span> name=<span class="string">"apple-mobile-web-app-status-bar-style"</span>&gt;//iphone的私有标签，iphone顶端状态条的样式。</span><br><span class="line">&lt;meta content=<span class="string">"telephone=no"</span> name=<span class="string">"format-detection"</span>&gt;//禁止数字自动识别为电话号码，这个比较有用，因为一串数字在iphone上会显示成蓝色，样式加成别的颜色也是不生效的。</span><br><span class="line">&lt;meta content=<span class="string">"email=no"</span> name=<span class="string">"format-detection"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/16/js常用方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jeff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myself.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长不大的孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/16/js常用方法/" itemprop="url">js常用方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-16T10:18:54+08:00">2018-05-16</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="js去除字符串空格"><a href="#js去除字符串空格" class="headerlink" title="js去除字符串空格"></a>js去除字符串空格</h4><h5 id="1-使用replace正则匹配的方法"><a href="#1-使用replace正则匹配的方法" class="headerlink" title="1.使用replace正则匹配的方法"></a>1.使用replace正则匹配的方法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">去除所有空格: str = str.replace(/\s*/g,&quot;&quot;);      </span><br><span class="line">去除两头空格: str = str.replace(/^\s*|\s*$/g,&quot;&quot;);</span><br><span class="line">去除左空格： str = str.replace( /^\s*/, “”);</span><br><span class="line">去除右空格： str = str.replace(/(\s*$)/g, &quot;&quot;);</span><br></pre></td></tr></table></figure>
+<h5 id="2-使用str-trim-方法"><a href="#2-使用str-trim-方法" class="headerlink" title="2.使用str.trim()方法"></a>2.使用str.trim()方法</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str = <span class="string">"   xiao  ming   "</span>;</span><br><span class="line">var str2 = str.trim();</span><br><span class="line">console.log(str2);   //xiao  ming</span><br></pre></td></tr></table></figure>
+<p><code>同理，str.trimLeft()，str.trimRight()分别用于去除字符串左右空格。</code></p>
+<h4 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h4><h5 id="1-传统方法"><a href="#1-传统方法" class="headerlink" title="1.传统方法"></a>1.传统方法</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var arr = [0,2,3,4,4,0,2];</span><br><span class="line">var obj = &#123;&#125;;</span><br><span class="line">var tmp = [];</span><br><span class="line"><span class="keyword">for</span>(var i = 0 ;i&lt; arr.length; i++)&#123;</span><br><span class="line">   <span class="keyword">if</span>( !obj[arr[i]] )&#123;</span><br><span class="line">      obj[arr[i]] = 1;</span><br><span class="line">      tmp.push(arr[i]);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(tmp); // [0,2,3,4]</span><br></pre></td></tr></table></figure>
+<h5 id="2-通过indexOf方法来实现"><a href="#2-通过indexOf方法来实现" class="headerlink" title="2.通过indexOf方法来实现"></a>2.通过indexOf方法来实现</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var arr = [2,3,4,4,5,2,3,6],</span><br><span class="line">   arr2 = [];</span><br><span class="line"><span class="keyword">for</span>(var i = 0;i&lt; arr.length;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr2.indexOf(arr[i]) &lt; 0)&#123;</span><br><span class="line">        arr2.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(arr2);</span><br></pre></td></tr></table></figure>
+<h5 id="3-通过filter方法来实现"><a href="#3-通过filter方法来实现" class="headerlink" title="3.通过filter方法来实现"></a>3.通过filter方法来实现</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var arr = [2,3,4,4,5,2,3,6];</span><br><span class="line">var arr2 = arr.filter(<span class="keyword">function</span>(element,index,self)&#123;</span><br><span class="line"><span class="built_in">return</span> self.indexOf(element) === index;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr2);</span><br></pre></td></tr></table></figure>
+<h4 id="js判断是否为谷歌浏览器"><a href="#js判断是否为谷歌浏览器" class="headerlink" title="js判断是否为谷歌浏览器"></a>js判断是否为谷歌浏览器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">navigator.userAgent.indexOf(<span class="string">'Chrome'</span>) === -1</span><br></pre></td></tr></table></figure>
+<h4 id="浏览器兼容ToFixed-保留两位小数"><a href="#浏览器兼容ToFixed-保留两位小数" class="headerlink" title="浏览器兼容ToFixed(保留两位小数)"></a>浏览器兼容ToFixed(保留两位小数)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> <span class="keyword">function</span> fmoney(num, decimal = 4) &#123;</span><br><span class="line">	<span class="keyword">if</span> (num === 0 || !num) &#123;</span><br><span class="line">		<span class="built_in">return</span> 0</span><br><span class="line">	&#125;</span><br><span class="line">	const <span class="built_in">times</span> = Math.pow(10, decimal + 1),</span><br><span class="line">		des = parseInt(num * <span class="built_in">times</span>),</span><br><span class="line">		rest = des % 10</span><br><span class="line">	<span class="keyword">if</span> (rest === 5) &#123;</span><br><span class="line">		<span class="built_in">return</span> ((parseFloat(des) + 1) / <span class="built_in">times</span>).toFixed(decimal)</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (rest === -5) &#123;</span><br><span class="line">		<span class="built_in">return</span> ((parseFloat(des) - 1) / <span class="built_in">times</span>).toFixed(decimal)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> num.toFixed(decimal)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="过滤html代码-（这里是过滤html中的img标签）"><a href="#过滤html代码-（这里是过滤html中的img标签）" class="headerlink" title="过滤html代码 （这里是过滤html中的img标签）"></a>过滤html代码 （这里是过滤html中的img标签）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> <span class="keyword">function</span> filterEditor(html) &#123;</span><br><span class="line">	<span class="built_in">return</span> html.replace(/&lt;\s?img[^&gt;]*&gt;/gi, <span class="string">'[图片]'</span>).replace(/&lt;(?:.|\s)*?&gt;/g, <span class="string">''</span>).replace(/&lt;\s?br[^&gt;]*/gi, <span class="string">' '</span>)</span><br><span class="line">&#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="comment">#### 如何将浮点数点左边的数每三位添加一个逗号</span></span><br><span class="line">```bash</span><br><span class="line"> <span class="keyword">function</span> commafy(num)&#123;</span><br><span class="line">  	<span class="built_in">return</span> num &amp;&amp; num</span><br><span class="line">  		.toString()</span><br><span class="line">  		.replace(/(\d)(?=(\d&#123;3&#125;)+\.)/g, <span class="keyword">function</span>(<span class="variable">$1</span>, <span class="variable">$2</span>)&#123;</span><br><span class="line">  			<span class="built_in">return</span> <span class="variable">$2</span> + <span class="string">','</span>;</span><br><span class="line">  		&#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="JS深度复制"><a href="#JS深度复制" class="headerlink" title="JS深度复制"></a>JS深度复制</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> deepClone(obj) &#123;</span><br><span class="line">  var result,objType = Object.prototype.toString.call(obj).slice(8,-1);</span><br><span class="line">  <span class="keyword">if</span> (objType === <span class="string">'Object'</span>) &#123;</span><br><span class="line">    result = &#123;&#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (objType === <span class="string">'Array'</span>) &#123;</span><br><span class="line">    result = [];</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">return</span> obj;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    var copy = obj[key];</span><br><span class="line">    <span class="keyword">if</span> (objType === <span class="string">'Object'</span> || objType === <span class="string">'Array'</span>) &#123;</span><br><span class="line">      result[key] = arguments.callee(copy);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      result[key] = obj[key]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1030,719 +1747,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/22/react定时器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jeff">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/myself.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="长不大的孩子">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/22/react定时器/" itemprop="url">react定时器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-22T17:16:02+08:00">2018-03-22</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端框架/" itemprop="url" rel="index"><span itemprop="name">前端框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import React , &#123; Component &#125; from <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line">clase Demo extends Component &#123;</span><br><span class="line">  </span><br><span class="line">  hanldClick = () =&gt; &#123;</span><br><span class="line">    this.timer &amp;&amp; clearInterval(this.timer) </span><br><span class="line">    this.timer = setInterval(() =&gt; &#123;</span><br><span class="line">      // todo something</span><br><span class="line">    &#125;, 1000)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default Demo;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/21/react如何实现双向绑定的？/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jeff">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/myself.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="长不大的孩子">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/21/react如何实现双向绑定的？/" itemprop="url">react如何实现双向绑定的？</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T10:31:30+08:00">2018-03-21</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端框架/" itemprop="url" rel="index"><span itemprop="name">前端框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>大家都知道react是单向数据流的，那我们怎么实现数据双向绑定的呢？</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import React , &#123; Component &#125; from <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line">clase Demo extends Component &#123;</span><br><span class="line"></span><br><span class="line">  state = &#123; </span><br><span class="line">    txt: <span class="string">'hello man'</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handChange = (e) =&gt; &#123; </span><br><span class="line">    console.log(e.target)</span><br><span class="line">    this.setState(&#123;txt: e.target.value&#125;)</span><br><span class="line">    // todo something</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span></span>() &#123;</span><br><span class="line">    const &#123; txt &#125; = this.state;</span><br><span class="line">    <span class="built_in">return</span> (</span><br><span class="line">      &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> value=&#123;txt&#125;  onChange=&#123;this.handChange&#125;/&gt;</span><br><span class="line">      &lt;p&gt;&#123;txt&#125;&lt;/p&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default Demo;</span><br></pre></td></tr></table></figure>
-<p>记住在react中改变state中值，千万不要直接 <code>this.state.txt = e.target.value</code>，要通过<code>this.setState({txt: e.target.value})</code>方式来改变state中的值</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/21/react的jsx文件一般写法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jeff">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/myself.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="长不大的孩子">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/21/react的jsx文件一般写法/" itemprop="url">react的jsx文件一般写法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T10:23:48+08:00">2018-03-21</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端框架/" itemprop="url" rel="index"><span itemprop="name">前端框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import React , &#123; Component &#125; from <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line">clase Demo extends Component &#123;</span><br><span class="line"></span><br><span class="line">  state = &#123; </span><br><span class="line">    txt: <span class="string">'hello man'</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handClick = () =&gt; &#123; // 事件</span><br><span class="line">    // todo something</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span></span>() &#123;</span><br><span class="line">    const &#123; txt &#125; = this.state;</span><br><span class="line">    <span class="built_in">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"demo"</span> onClick=&#123;this.handClick&#125;&gt;&#123;txt&#125;&lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default Demo;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/vscode设置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jeff">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/myself.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="长不大的孩子">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/19/vscode设置/" itemprop="url">vscode 设置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-19T11:11:24+08:00">2018-03-19</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编辑器/" itemprop="url" rel="index"><span itemprop="name">编辑器</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">// 将设置放入此文件中以覆盖默认设置</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"editor.tabSize"</span>: 2,</span><br><span class="line">  <span class="string">"files.associations"</span>: &#123;</span><br><span class="line">      <span class="string">"*.vue"</span>: <span class="string">"vue"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"eslint.autoFixOnSave"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"eslint.options"</span>: &#123;</span><br><span class="line">      <span class="string">"extensions"</span>: [</span><br><span class="line">          <span class="string">".js"</span>,</span><br><span class="line">          <span class="string">".vue"</span></span><br><span class="line">      ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"eslint.validate"</span>: [</span><br><span class="line">      <span class="string">"javascript"</span>,</span><br><span class="line">      <span class="string">"javascriptreact"</span>,</span><br><span class="line">      <span class="string">"vue"</span>,</span><br><span class="line">      <span class="string">"vue-html"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"search.exclude"</span>: &#123;</span><br><span class="line">      <span class="string">"**/node_modules"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">"**/bower_components"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">"**/dist"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"emmet.syntaxProfiles"</span>: &#123;</span><br><span class="line">      <span class="string">"javascript"</span>: <span class="string">"jsx"</span>,</span><br><span class="line">      <span class="string">"vue"</span>: <span class="string">"html"</span>,</span><br><span class="line">      <span class="string">"vue-html"</span>: <span class="string">"html"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"git.confirmSync"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"window.zoomLevel"</span>: -1,</span><br><span class="line">  <span class="string">"vsicons.projectDetection.autoReload"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"typescript.check.tscVersion"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"editor.renderWhitespace"</span>: <span class="string">"boundary"</span>,</span><br><span class="line">  <span class="string">"editor.cursorBlinking"</span>: <span class="string">"smooth"</span>,</span><br><span class="line">  <span class="string">"workbench.iconTheme"</span>: <span class="string">"vscode-icons"</span>,</span><br><span class="line">  <span class="string">"editor.minimap.enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"editor.minimap.renderCharacters"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"tslint.autoFixOnSave"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"beautify.tabSize"</span>: 2,</span><br><span class="line">  <span class="string">"window.title"</span>: <span class="string">"<span class="variable">$&#123;dirty&#125;</span><span class="variable">$&#123;activeEditorMedium&#125;</span><span class="variable">$&#123;separator&#125;</span><span class="variable">$&#123;rootName&#125;</span>"</span>,</span><br><span class="line">  <span class="string">"typescript.extension.sortImports.maxNamedImportsInSingleLine"</span>: 5,</span><br><span class="line">  <span class="string">"typescript.extension.sortImports.omitSemicolon"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"editor.codeLens"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"editor.snippetSuggestions"</span>: <span class="string">"top"</span>,</span><br><span class="line">  <span class="string">"react-native-storybooks.port"</span>: 6006,</span><br><span class="line">  <span class="string">"sublimeTextKeymap.promptV3Features"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"editor.multiCursorModifier"</span>: <span class="string">"ctrlCmd"</span>,</span><br><span class="line">  <span class="string">"editor.formatOnPaste"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"explorer.confirmDelete"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/14/mac下配置apache/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jeff">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/myself.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="长不大的孩子">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/14/mac下配置apache/" itemprop="url">mac下配置apache</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-14T13:57:40+08:00">2018-03-14</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/服务器相关/" itemprop="url" rel="index"><span itemprop="name">服务器相关</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="mac下的apache的配置文件目录"><a href="#mac下的apache的配置文件目录" class="headerlink" title="mac下的apache的配置文件目录"></a>mac下的apache的配置文件目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/apache2/httpd.conf</span><br></pre></td></tr></table></figure>
-<h3 id="开启apache服务"><a href="#开启apache服务" class="headerlink" title="开启apache服务"></a>开启apache服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apachectl start</span><br></pre></td></tr></table></figure>
-<h3 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apachectl restart</span><br></pre></td></tr></table></figure>
-<h3 id="停用"><a href="#停用" class="headerlink" title="停用"></a>停用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apachectl stop</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1794,7 +1798,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1819,7 +1823,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1844,7 +1850,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

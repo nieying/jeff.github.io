@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.5" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.5">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.5" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.0.5',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideUpIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="js," />
+
+
+<meta name="description" content="JS 的垃圾回收机制12* Js具有自动垃圾回收机制。垃圾收集器会按照固定的时间间隔周期性的执行。* JS中最常见的垃圾回收方式是标记清除。` 工作原理：是当变量进入环境时，将这个变量标记为“进入环境”。当变量离开环境时，则将其标记为“离开环境”。标记“离开环境”的就回收内存。工作流程： 1234垃圾回收器，在运行的时候会给存储在内存中的所有变量都加上标记。去掉环境中的变量以及被环境中的变量引用的">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js部分概念">
+<meta property="og:url" content="http://yoursite.com/2018/07/11/js概念宝典/index.html">
+<meta property="og:site_name" content="长不大的孩子">
+<meta property="og:description" content="JS 的垃圾回收机制12* Js具有自动垃圾回收机制。垃圾收集器会按照固定的时间间隔周期性的执行。* JS中最常见的垃圾回收方式是标记清除。` 工作原理：是当变量进入环境时，将这个变量标记为“进入环境”。当变量离开环境时，则将其标记为“离开环境”。标记“离开环境”的就回收内存。工作流程： 1234垃圾回收器，在运行的时候会给存储在内存中的所有变量都加上标记。去掉环境中的变量以及被环境中的变量引用的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-13T06:49:38.543Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js部分概念">
+<meta name="twitter:description" content="JS 的垃圾回收机制12* Js具有自动垃圾回收机制。垃圾收集器会按照固定的时间间隔周期性的执行。* JS中最常见的垃圾回收方式是标记清除。` 工作原理：是当变量进入环境时，将这个变量标记为“进入环境”。当变量离开环境时，则将其标记为“离开环境”。标记“离开环境”的就回收内存。工作流程： 1234垃圾回收器，在运行的时候会给存储在内存中的所有变量都加上标记。去掉环境中的变量以及被环境中的变量引用的">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/11/js概念宝典/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>js部分概念 | 长不大的孩子</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">长不大的孩子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">9</span>
+              </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类<span class="badge">7</span>
+              </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">20</span>
+              </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/11/js概念宝典/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jeff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myself.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长不大的孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js部分概念</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-11T09:38:54+08:00">2018-07-11</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/theory/" itemprop="url" rel="index"><span itemprop="name">theory</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="JS-的垃圾回收机制"><a href="#JS-的垃圾回收机制" class="headerlink" title="JS 的垃圾回收机制"></a>JS 的垃圾回收机制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* Js具有自动垃圾回收机制。垃圾收集器会按照固定的时间间隔周期性的执行。</span><br><span class="line">* JS中最常见的垃圾回收方式是标记清除。`</span><br></pre></td></tr></table></figure>
+<p>工作原理：是当变量进入环境时，将这个变量标记为“进入环境”。当变量离开环境时，则将其标记为“离开环境”。标记“离开环境”的就回收内存。<br>工作流程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">垃圾回收器，在运行的时候会给存储在内存中的所有变量都加上标记。</span><br><span class="line">去掉环境中的变量以及被环境中的变量引用的变量的标记。</span><br><span class="line">再被加上标记的会被视为准备删除的变量。</span><br><span class="line">垃圾回收器完成内存清除工作，销毁那些带标记的值并回收他们所占用的内存空间。</span><br></pre></td></tr></table></figure>
+<h5 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h5><p>工作原理：跟踪记录每个值被引用的次数。</p>
+<p>工作流程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">声明了一个变量并将一个引用类型的值赋值给这个变量，这个引用类型值的引用次数就是1。</span><br><span class="line">同一个值又被赋值给另一个变量，这个引用类型值的引用次数加1.</span><br><span class="line">当包含这个引用类型值的变量又被赋值成另一个值了，那么这个引用类型值的引用次数减1.</span><br><span class="line">当引用次数变成0时，说明没办法访问这个值了。</span><br><span class="line">当垃圾收集器下一次运行时，它就会释放引用次数是0的值所占的内存。</span><br></pre></td></tr></table></figure>
+<p>但是循环引用的时候就会释放不掉内存。循环引用就是对象 A 中包含另一个指向对象 B 的指针，B 中也包含一个指向 A 的引用。<br>因为 IE 中的 BOM、DOM 的实现使用了 COM，而 COM 对象使用的垃圾收集机制是引用计数策略。所以会存在循环引用的问题。<br>解决：手工断开 js 对象和 DOM 之间的链接。赋值为 null。IE9 把 DOM 和 BOM 转换成真正的 JS 对象了，所以避免了这个问题。</p>
+<h5 id="什么情况会引起内存泄漏？"><a href="#什么情况会引起内存泄漏？" class="headerlink" title="什么情况会引起内存泄漏？"></a>什么情况会引起内存泄漏？</h5><p>虽然有垃圾回收机制但是我们编写代码操作不当还是会造成内存泄漏。</p>
+<ul>
+<li>意外的全局变量引起的内存泄漏。</li>
+</ul>
+<p>原因：全局变量，不会被回收。<br>解决：使用严格模式避免。</p>
+<ul>
+<li>闭包引起的内存泄漏</li>
+</ul>
+<p>原因：闭包可以维持函数内局部变量，使其得不到释放。<br>解决：将事件处理函数定义在外部，解除闭包,或者在定义事件处理函数的外部函数中，删除对 dom 的引用。</p>
+<ul>
+<li>没有清理的 DOM 元素引用</li>
+</ul>
+<p>原因：虽然别的地方删除了，但是对象中还存在对 dom 的引用<br>解决：手动删除。</p>
+<ul>
+<li>被遗忘的定时器或者回调</li>
+</ul>
+<p>原因：定时器中有 dom 的引用，即使 dom 删除了，但是定时器还在，所以内存中还是有这个 dom。<br>解决：手动删除定时器和 dom。</p>
+<ul>
+<li>子元素存在引用引起的内存泄漏</li>
+</ul>
+<p>原因：div 中的 ul li 得到这个 div，会间接引用某个得到的 li，那么此时因为 div 间接引用 li，即使 li 被清空，也还是在内存中，并且只要 li 不被删除，他的父元素都不会被删除。<br>解决：手动删除清空。</p>
+<h5 id="什么放在内存中？什么不放在内存中？"><a href="#什么放在内存中？什么不放在内存中？" class="headerlink" title="什么放在内存中？什么不放在内存中？"></a>什么放在内存中？什么不放在内存中？</h5><p>基本类型是：Undefined/Null/Boolean/Number/String</p>
+<p>基本类型的值存在内存中，被保存在栈内存中。从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本。</p>
+<p>引用类型：object</p>
+<p>引用类型的值是对象，保存在堆内存中。</p>
+<ol>
+<li><p>包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向该对象的指针。从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终都指向同一个对象。</p>
+</li>
+<li><p>js 不允许直接访问内存中的位置，也就是不能直接访问操作对象的内存空间。在操作对象时，实际上是在操作对象的引用而不是实际的对象。</p>
+</li>
+</ol>
+<h5 id="栈和堆的区别"><a href="#栈和堆的区别" class="headerlink" title="栈和堆的区别"></a>栈和堆的区别</h5><p>一、堆栈空间分配区别：<br>　　 1、栈（操作系统）：由操作系统自动分配释放 ，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈；<br>　　 2、堆（操作系统）： 一般由程序员分配释放，若程序员不释放，程序结束时可能由 OS 回收，分配方式倒是类似于链表。<br>　　二、堆栈缓存方式区别：<br>　　 1、栈使用的是一级缓存， 他们通常都是被调用时处于存储空间中，调用完毕立即释放；<br>　　 2、堆是存放在二级缓存中，生命周期由虚拟机的垃圾回收算法来决定（并不是一旦成为孤儿对象就能被回收）。所以调用这些对象的速度要相对来得低一些。<br>　　三、堆栈数据结构区别：<br>　　堆（数据结构）：堆可以被看成是一棵树，如：堆排序；<br>　　栈（数据结构）：一种先进后出的数据结构。</p>
+<h4 id="浏览器输入URL过程中都发生了什么？"><a href="#浏览器输入URL过程中都发生了什么？" class="headerlink" title="浏览器输入URL过程中都发生了什么？"></a>浏览器输入URL过程中都发生了什么？</h4><h5 id="详细版"><a href="#详细版" class="headerlink" title="详细版"></a>详细版</h5><p>浏览器会开启一个线程来处理这个请求，对 URL 分析判断如果是 http 协议就按照 Web 方式来处理;<br>调用浏览器内核中的对应方法，比如 WebView 中的 loadUrl 方法;<br>通过DNS解析获取网址的IP地址，设置 UA 等信息发出第二个GET请求;<br>进行HTTP协议会话，客户端发送报头(请求报头);<br>进入到web服务器上的 Web Server，如 Apache、Tomcat、Node.JS 等服务器;<br>进入部署好的后端应用，如 PHP、Java、JavaScript、Python 等，找到对应的请求处理;<br>处理结束回馈报头，此处如果浏览器访问过，缓存上有对应资源，会与服务器最后修改时间对比，一致则返回304;<br>浏览器开始下载html文档(响应报头，状态码200)，同时使用缓存;<br>文档树建立，根据标记请求所需指定MIME类型的文件（比如css、js）,同时设置了cookie;<br>页面开始渲染DOM，JS根据DOM API操作DOM,执行事件绑定等，页面显示完成。</p>
+<h5 id="简洁版"><a href="#简洁版" class="headerlink" title="简洁版"></a>简洁版</h5><p>浏览器根据请求的URL交给DNS域名解析，找到真实IP，向服务器发起请求；<br>服务器交给后台处理完成后返回数据，浏览器接收文件（HTML、JS、CSS、图象等）；<br>浏览器对加载到的资源（HTML、JS、CSS等）进行语法解析，建立相应的内部数据结构（如HTML的DOM）；<br>载入解析到的资源文件，渲染页面，完成。</p>
+<h4 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h4><h5 id="认证服务器。"><a href="#认证服务器。" class="headerlink" title="认证服务器。"></a>认证服务器。</h5><p>浏览器内置一个受信任的CA机构列表，并保存了这些CA机构的证书。第一阶段服务器会提供经CA机构认证颁发的服务器证书，如果认证该服务器证书的CA机构，存在于浏览器的受信任CA机构列表中，并且服务器证书中的信息与当前正在访问的网站（域名等）一致，那么浏览器就认为服务端是可信的，并从服务器证书中取得服务器公钥，用于后续流程。否则，浏览器将提示用户，根据用户的选择，决定是否继续。当然，我们可以管理这个受信任CA机构列表，添加我们想要信任的CA机构，或者移除我们不信任的CA机构。</p>
+<h5 id="协商会话密钥。"><a href="#协商会话密钥。" class="headerlink" title="协商会话密钥。"></a>协商会话密钥。</h5><p>客户端在认证完服务器，获得服务器的公钥之后，利用该公钥与服务器进行加密通信，协商出两个会话密钥，分别是用于加密客户端往服务端发送数据的客户端会话密钥，用于加密服务端往客户端发送数据的服务端会话密钥。在已有服务器公钥，可以加密通讯的前提下，还要协商两个对称密钥的原因，是因为非对称加密相对复杂度更高，在数据传输过程中，使用对称加密，可以节省计算资源。另外，会话密钥是随机生成，每次协商都会有不一样的结果，所以安全性也比较高。</p>
+<h5 id="加密通讯。"><a href="#加密通讯。" class="headerlink" title="加密通讯。"></a>加密通讯。</h5><p>此时客户端服务器双方都有了本次通讯的会话密钥，之后传输的所有Http数据，都通过会话密钥加密。这样网路上的其它用户，将很难窃取和篡改客户端和服务端之间传输的数据，从而保证了数据的私密性和完整性。</p>
+<h4 id="HTTPS和HTTP的区别"><a href="#HTTPS和HTTP的区别" class="headerlink" title="HTTPS和HTTP的区别"></a>HTTPS和HTTP的区别</h4><p>超文本传输协议HTTP协议被用于在Web浏览器和网站服务器之间传递信息。HTTP协议以明文方式发送内容，不提供任何方式的数据加密，如果攻击者截取了Web浏览器和网站服务器之间的传输报文，就可以直接读懂其中的信息，因此HTTP协议不适合传输一些敏感信息，比如信用卡号、密码等。<br>为了解决HTTP协议的这一缺陷，需要使用另一种协议：安全套接字层超文本传输协议HTTPS。为了数据传输的安全，HTTPS在HTTP的基础上加入了SSL协议，SSL依靠证书来验证服务器的身份，并为浏览器和服务器之间的通信加密。</p>
+<p>HTTPS和HTTP的区别主要为以下四点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">https协议需要到ca申请证书，一般免费证书很少，需要交费。</span><br><span class="line">http是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议。</span><br><span class="line">http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</span><br><span class="line">http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</span><br></pre></td></tr></table></figure></p>
+<h4 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h4><p>100  Continue  继续，一般在发送post请求时，已发送了http header之后服务端将返回此信息，表示确认，之后发送具体参数信息<br>200  OK   正常返回信息<br>201  Created  请求成功并且服务器创建了新的资源<br>202  Accepted  服务器已接受请求，但尚未处理<br>301  Moved Permanently  请求的网页已永久移动到新位置。<br>302  Found  临时性重定向。<br>303  See Other  临时性重定向，且总是使用 GET 请求新的 URI。<br>304  Not Modified  自从上次请求后，请求的网页未修改过。<br>400  Bad Request  服务器无法理解请求的格式，客户端不应当尝试再次使用相同的内容发起请求。<br>401  Unauthorized  请求未授权。<br>403  Forbidden  禁止访问。<br>404  Not Found  找不到如何与 URI 相匹配的资源。<br>500  Internal Server Error  最常见的服务器端错误。<br>503  Service Unavailable 服务器端暂时无法处理请求（可能是过载或维护）。</p>
+<h4 id="null和undefined区别"><a href="#null和undefined区别" class="headerlink" title="null和undefined区别"></a>null和undefined区别</h4><p><code>null是一个表示&quot;无&quot;的对象，转为数值时为0；undefined是一个表示&quot;无&quot;的原始值，转为数值时为NaN</code></p>
+<h5 id="null"><a href="#null" class="headerlink" title="null"></a>null</h5><p>作为函数参数，表示该函数参数不是对象；<br>作为对象原型链的终点</p>
+<h5 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h5><p>变量被申明了，但是没有被赋值，就等于undefined;<br>调用函数时，应该提供的参数没有提供，该参数等于undefined。<br>对象没有赋值的属性，该属性的值为undefined。<br>函数没有返回值时，默认返回undefined。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/28/call与apply区别/" rel="next" title="call与apply区别">
+                <i class="fa fa-chevron-left"></i> call与apply区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/myself.jpeg"
+                alt="jeff" />
+            
+              <p class="site-author-name" itemprop="name">jeff</p>
+              <p class="site-description motion-element" itemprop="description">null==undefined</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/nieying" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:1411008062@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#JS-的垃圾回收机制"><span class="nav-number">1.</span> <span class="nav-text">JS 的垃圾回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#引用计数"><span class="nav-number">1.1.</span> <span class="nav-text">引用计数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#什么情况会引起内存泄漏？"><span class="nav-number">1.2.</span> <span class="nav-text">什么情况会引起内存泄漏？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#什么放在内存中？什么不放在内存中？"><span class="nav-number">1.3.</span> <span class="nav-text">什么放在内存中？什么不放在内存中？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#栈和堆的区别"><span class="nav-number">1.4.</span> <span class="nav-text">栈和堆的区别</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器输入URL过程中都发生了什么？"><span class="nav-number">2.</span> <span class="nav-text">浏览器输入URL过程中都发生了什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#详细版"><span class="nav-number">2.1.</span> <span class="nav-text">详细版</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#简洁版"><span class="nav-number">2.2.</span> <span class="nav-text">简洁版</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTPS"><span class="nav-number">3.</span> <span class="nav-text">HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#认证服务器。"><span class="nav-number">3.1.</span> <span class="nav-text">认证服务器。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#协商会话密钥。"><span class="nav-number">3.2.</span> <span class="nav-text">协商会话密钥。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加密通讯。"><span class="nav-number">3.3.</span> <span class="nav-text">加密通讯。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTPS和HTTP的区别"><span class="nav-number">4.</span> <span class="nav-text">HTTPS和HTTP的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP状态码"><span class="nav-number">5.</span> <span class="nav-text">HTTP状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null和undefined区别"><span class="nav-number">6.</span> <span class="nav-text">null和undefined区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">6.1.</span> <span class="nav-text">null</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">6.2.</span> <span class="nav-text">undefined</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jeff</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.5"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.5"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.5"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.5"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.5"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
